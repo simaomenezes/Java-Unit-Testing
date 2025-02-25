@@ -1,10 +1,26 @@
 package github.com.simaomenezes.math;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test Math Operations in SimpleMath class")
 public class SimpleMathTest {
+
+    //SimpleMath math;
+
+    @BeforeAll
+    static void setup(){
+        System.out.println("Running @BeforeAll method!!!");
+    }
+
+    @AfterAll
+    static void cleanup(){
+        System.out.println("Running @AfterAll method!!!");
+    }
 
     @Test
     void testSun(){

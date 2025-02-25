@@ -68,7 +68,7 @@ public class PersonTest {
         // When / Act & Then / Assert
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> service.createPerson(person),
+                () -> personService.createPerson(person),
                 () -> "Empty e-Mail should have cause an IllegalArgumentException!"
         );
 

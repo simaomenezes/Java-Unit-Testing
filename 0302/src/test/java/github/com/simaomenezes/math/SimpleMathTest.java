@@ -115,13 +115,16 @@ public class SimpleMathTest {
     }
 
     @Test
+    @DisplayName("Test Square Root of 81 = 9")
     void testSquareRoot(){
 
+        System.out.println("Test Square Root of 81 = 9");
 
-        double anyNumber = 45d;
-        Double result = simpleMath.squareRoot(anyNumber);
+        double number = 81d;
+        double expected = 9d;
 
-        double expected = 6.708203932499369d;
-        assertEquals(expected, result, () -> "The testSquareRoot method should return: " + expected);
+        Double result = simpleMath.squareRoot(number);
+
+        assertEquals(expected, result, () -> "The testSquareRoot of " + number + " did not produce " + expected + "!");
     }
 }

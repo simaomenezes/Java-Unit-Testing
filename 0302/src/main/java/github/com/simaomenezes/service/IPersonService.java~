@@ -1,0 +1,5 @@
+package github.com.simaomenezes.service;
+
+public interface IPersonService {
+    void createPerson();
+}

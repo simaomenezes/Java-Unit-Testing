@@ -1,14 +1,62 @@
 package github.com.simaomenezes.math;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test Math Operations in SimpleMath class")
 public class SimpleMathTest {
 
+    SimpleMath simpleMath;
+
+    @BeforeAll
+    static void setup(){
+        System.out.println("Running @BeforeAll method!!!");
+    }
+
+    @AfterAll
+    static void cleanup(){
+        System.out.println("Running @AfterAll method!!!");
+    }
+
+    @BeforeEach
+    void beforeEachMethod(){
+        simpleMath = new SimpleMath();
+        System.out.println("Running @BeforeEach method!!!");
+    }
+
+    @AfterEach
+    void afterEachMethod(){
+        System.out.println("Running @AfterEach method!!!");
+    }
+
+
+    // test[System Under Test]_[Condition or State Change]_[Expected Result]
+
+    @Test
+    @DisplayName("Test 6.2 + 2 = 8.2")
+    void testSun_When_SixPointTwoPlusTwoEqualsEight(){
+        System.out.println("Test 6.2 + 2 = 8.2!");
+        // AAA Arrange, Act, Assert
+        // Given / Arrange
+
+        double firstNumber = 6.2d;
+        double secondNumber = 2d;
+        double expected = 8.2d;
+
+        // When / Act
+        Double actual = simpleMath.sum(firstNumber, secondNumber);
+
+        // Then / Assert
+        assertEquals(expected, actual,
+                () -> firstNumber + " + " +
+                        secondNumber + " did not produce " +
+                        expected + " !");
+
+    }
     @Test
     void testSun(){
-        SimpleMath simpleMath = new SimpleMath();
+
         double firstNumber = 1d;
         double secondNumber = 2d;
         Double result = simpleMath.sum(firstNumber, secondNumber);
@@ -20,7 +68,7 @@ public class SimpleMathTest {
 
     @Test
     void testDivision(){
-        SimpleMath simpleMath = new SimpleMath();
+
 
         double firstNumber = 10d;
         double secondNumber = 5d;
@@ -32,7 +80,7 @@ public class SimpleMathTest {
 
     @Test
     void testSubtraction(){
-        SimpleMath simpleMath = new SimpleMath();
+
 
         double firstNumber = 10d;
         double secondNumber = 5d;
@@ -44,7 +92,7 @@ public class SimpleMathTest {
 
     @Test
     void testMultiplication(){
-        SimpleMath simpleMath = new SimpleMath();
+
 
         double firstNumber = 10d;
         double secondNumber = 5d;
@@ -56,7 +104,7 @@ public class SimpleMathTest {
 
     @Test
     void testMean(){
-        SimpleMath simpleMath = new SimpleMath();
+
 
         double firstNumber = 5d;
         double secondNumber = 5d;
@@ -67,13 +115,16 @@ public class SimpleMathTest {
     }
 
     @Test
+    @DisplayName("Test Square Root of 81 = 9")
     void testSquareRoot(){
-        SimpleMath simpleMath = new SimpleMath();
 
-        double anyNumber = 45d;
-        Double result = simpleMath.squareRoot(anyNumber);
+        System.out.println("Test Square Root of 81 = 9");
 
-        double expected = 6.708203932499369d;
-        assertEquals(expected, result, () -> "The testSquareRoot method should return: " + expected);
+        double number = 81d;
+        double expected = 9d;
+
+        Double result = simpleMath.squareRoot(number);
+
+        assertEquals(expected, result, () -> "The testSquareRoot of " + number + " did not produce " + expected + "!");
     }
 }

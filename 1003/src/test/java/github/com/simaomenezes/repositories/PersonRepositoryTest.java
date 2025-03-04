@@ -24,8 +24,8 @@ public class PersonRepositoryTest {
                 "Lucas",
                 "Lima",
                 "lucaslima@gmail.com",
-                "Masculino",
-                "Rua 1"
+                "Rua 1",
+                "Male"
         );
         // When / Act
 
@@ -45,15 +45,15 @@ public class PersonRepositoryTest {
                 "Lucas",
                 "Lima",
                 "lucaslima@gmail.com",
-                "Masculino",
-                "Rua 1"
+                "Rua 1",
+                "Male"
         );
         Person person2 = new Person(
                 "Lucas1",
                 "Lima1",
                 "lucaslima1@gmail.com",
-                "Masculino",
-                "Rua 11"
+                "Rua 11",
+                "Male"
         );
         repository.save(person1);
         repository.save(person2);
@@ -72,14 +72,34 @@ public class PersonRepositoryTest {
                 "Murilo",
                 "Lima",
                 "murilo@gmail.com",
-                "Masculino",
-                "Rua 4"
-        );
+                "Rua 4",
+                "Male"
+                );
         repository.save(person1);
         // When / Act
         Person p = repository.findById(person1.getId()).isPresent() ? repository.findById(person1.getId()).get() : null;
         // Then / Assert
         assertNotNull(p);
         assertEquals(p.getId(), person1.getId());
+    }
+
+    @DisplayName("Given Person Object when find by email then return person object")
+    @Test
+    void testGivePersonObject_whenFindByEmail_thenReturnPersonObject(){
+        // Given /Assert
+        Person p = new Person(
+                "Luiz",
+                "Lima",
+                "luiz@gmail.com",
+                "Rua 33",
+                "Male"
+        );
+        repository.save(p);
+
+        // When / Act
+        Person personFound = repository.findByEmail(p.getEmail()).get();
+        // Then / Assert
+        assertNotNull(personFound);
+        assertEquals(personFound.getEmail(), p.getEmail());
     }
 }

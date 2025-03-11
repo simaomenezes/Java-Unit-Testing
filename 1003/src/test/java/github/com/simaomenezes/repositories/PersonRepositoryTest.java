@@ -159,7 +159,7 @@ public class PersonRepositoryTest {
     @Test
     void testGivenFirstNameAndLastName_whenFindByFirstNameAndLastNameJPQL_thenReturnPersonObject(){
         Person p = new Person(
-                "Eduardo ",
+                "Eduardo",
                 "Silva",
                 "eduradosilva@gmail.com",
                 "Rua 33",
@@ -179,7 +179,7 @@ public class PersonRepositoryTest {
     @Test
     void testGivenFirstNameAndLastName_whenFindByFirstNameAndLastNameJPQLNamedParam_thenReturnPersonObject(){
         Person p = new Person(
-                "Eduardo ",
+                "Eduardo",
                 "Silva",
                 "eduradosilva@gmail.com",
                 "Rua 33",
@@ -199,7 +199,7 @@ public class PersonRepositoryTest {
     @Test
     void testGivenFirstNameAndLastName_whenFindByFirstNameAndLastNameNativeSQL_thenReturnPersonObject(){
         Person p = new Person(
-                "Eduardo ",
+                "Eduardo",
                 "Silva",
                 "eduradosilva@gmail.com",
                 "Rua 33",

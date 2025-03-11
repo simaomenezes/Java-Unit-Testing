@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DataJpaTest
+@DataJpaTest(showSql = true)
 public class PersonRepositoryTest {
 
     @Autowired
@@ -154,4 +154,67 @@ public class PersonRepositoryTest {
         // Then / Assert
         assertTrue(personOptional.isEmpty());
     }
+
+    @DisplayName("Given FirstName And LastName when Find By FirstName And LastName JPQL then Return Person Object")
+    @Test
+    void testGivenFirstNameAndLastName_whenFindByFirstNameAndLastNameJPQL_thenReturnPersonObject(){
+        Person p = new Person(
+                "Eduardo ",
+                "Silva",
+                "eduradosilva@gmail.com",
+                "Rua 33",
+                "Male"
+        );
+
+        repository.save(p);
+
+        String firstName = "Eduardo";
+        String lastName = "Silva";
+        Person personFound = repository.findByPJQL(firstName, lastName);
+
+        assertNotNull(personFound);
+    }
+
+    @DisplayName("Given FirstName And LastName when Find By FirstName And LastName JPQL Named Param then Return Person Object")
+    @Test
+    void testGivenFirstNameAndLastName_whenFindByFirstNameAndLastNameJPQLNamedParam_thenReturnPersonObject(){
+        Person p = new Person(
+                "Eduardo ",
+                "Silva",
+                "eduradosilva@gmail.com",
+                "Rua 33",
+                "Male"
+        );
+
+        repository.save(p);
+
+        String firstName = "Eduardo";
+        String lastName = "Silva";
+        Person personFound = repository.findByPJQLNamedParam(firstName, lastName);
+
+        assertNotNull(personFound);
+    }
+
+    @DisplayName("Given FirstName And LastName when Find By FirstName And LastName JPQL Named Param then Return Person Object")
+    @Test
+    void testGivenFirstNameAndLastName_whenFindByFirstNameAndLastNameNativeSQL_thenReturnPersonObject(){
+        Person p = new Person(
+                "Eduardo ",
+                "Silva",
+                "eduradosilva@gmail.com",
+                "Rua 33",
+                "Male"
+        );
+
+        repository.save(p);
+
+        String firstName = "Eduardo";
+        String lastName = "Silva";
+        Person personFound = repository.findByNativeSQL(firstName, lastName);
+
+        assertNotNull(personFound);
+    }
+
+
+
 }

@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import github.com.simaomenezes.exceptions.ResourceNotFoundException;
 import github.com.simaomenezes.model.Person;
 import github.com.simaomenezes.services.PersonServices;
 import org.junit.jupiter.api.BeforeEach;
@@ -118,5 +119,19 @@ public class PersonControllerTest {
                 .andExpect(jsonPath("$.email", is(person.getEmail())));
     }
 
+    @Test
+    @DisplayName("Given Invalid PersonId when findById then Return Not Found")
+    void testGivenInvalidPersonId_WhenFindById_thenReturnNotFound() throws JsonProcessingException, Exception {
 
+        // Given / Arrange
+        long personId = 1L;
+        given(service.findById(personId)).willThrow(ResourceNotFoundException.class);
+
+        // When / Act
+        ResultActions response = mockMvc.perform(get("/person/{id}", personId));
+
+        // Then / Assert
+        response.andExpect(status().isNotFound())
+                .andDo(print());
+    }
 }

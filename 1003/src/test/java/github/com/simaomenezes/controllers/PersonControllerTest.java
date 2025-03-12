@@ -191,4 +191,21 @@ public class PersonControllerTest {
         // Then / Assert
         response.andExpect(status().isNotFound()).andDo(print());
     }
+
+    @Test
+    @DisplayName("Given personId when Delete then Return NotContent")
+    void testGivenPersonId_WhenDelete_thenReturnNotContent() throws JsonProcessingException, Exception {
+
+        // Given / Arrange
+        long personId = 1L;
+        willDoNothing().given(service).delete(personId);
+
+        // When / Act
+        ResultActions response = mockMvc.perform(delete("/person/{id}", personId));
+
+        // Then / Assert
+        response.
+                andExpect(status().isNoContent())
+                .andDo(print());
+    }
 }

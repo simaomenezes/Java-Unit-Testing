@@ -1,6 +1,38 @@
 spring:
+  application:
+    name: JunityTest
+  output:
+    ansi:
+      enabled: ALWAYS
   datasource:
-    url: jdbc:h2:~/testdb;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/junity_test_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+  logging:
+    pattern:
+      console: '%clr(%d{dd-MM-yyyy HH:mm:ss}){faint} %clr(%5p) %clr([%t]){faint} %clr(%-40.40logger){cyan} %clr(:){yellow} %m%n'
+    file:
+      name: app.log
+    level:
+      root: warn
+      io:
+        github:
+          my-api: trace
+      org:
+        springframework:
+          web: debug
+          security: trace
+  # trace
+  # debug
+  # info
+  # warn
+  # error
+  springdoc:
+    override-with-generic-response: false

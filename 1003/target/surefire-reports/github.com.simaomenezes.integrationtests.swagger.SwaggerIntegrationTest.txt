@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: github.com.simaomenezes.integrationtests.swagger.SwaggerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.213 s <<< FAILURE! -- in github.com.simaomenezes.integrationtests.swagger.SwaggerIntegrationTest
+github.com.simaomenezes.integrationtests.swagger.SwaggerIntegrationTest.testShouldDisplaySwaggerUiPage -- Time elapsed: 0.045 s <<< ERROR!
+jakarta.persistence.TransactionRequiredException: Executing an update/delete query
+	at org.hibernate.internal.AbstractSharedSessionContract.checkTransactionNeededForUpdateOperation(AbstractSharedSessionContract.java:560)
+	at org.hibernate.query.spi.AbstractQuery.executeUpdate(AbstractQuery.java:647)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:419)
+	at jdk.proxy2/jdk.proxy2.$Proxy210.executeUpdate(Unknown Source)
+	at github.com.simaomenezes.integrationtests.testcontainers.AbstractIntegrationTest.cleanDatabase(AbstractIntegrationTest.java:40)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

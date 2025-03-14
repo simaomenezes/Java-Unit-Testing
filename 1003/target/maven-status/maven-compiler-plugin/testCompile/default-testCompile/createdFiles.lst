@@ -1,0 +1,5 @@
+github\com\simaomenezes\services\PersonServicesTest.class
+github\com\simaomenezes\integrationtests\testcontainers\AbstractIntegrationTest.class
+github\com\simaomenezes\integrationtests\swagger\SwaggerIntegrationTest.class
+github\com\simaomenezes\repositories\PersonRepositoryTest.class
+github\com\simaomenezes\controllers\PersonControllerTest.class

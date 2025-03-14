@@ -1,9 +1,12 @@
 package github.com.simaomenezes.repositories;
 
+import github.com.simaomenezes.integrationtests.testcontainers.AbstractIntegrationTest;
 import github.com.simaomenezes.model.Person;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
@@ -12,7 +15,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest(showSql = true)
-public class PersonRepositoryTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class PersonRepositoryTest extends AbstractIntegrationTest {
 
     @Autowired
     private PersonRepository repository;
